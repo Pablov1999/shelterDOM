@@ -8,7 +8,105 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ================== ELEMENT: BUTTON HOVER ANIMATION=========================*/
+:root {
+  --main-color: #fff; /*light mode: black*/
+  --contrast-color: #000; /*light mode: white*/
+  --accent-color: #bdae82; /*light mode: black */
+  --hover-color: #bdae82; /*light mode: white*/
+  --button-color: #bdae82; /*no change*/
+  --light-color: transparent; /*light mode: #bdae82*/
+  --active-color: #000; /*light mode: #bdae82*/
+  --wrapper-color: rgba(0, 0, 0, 0.5); /*no change*/
+  --wrapper-form: rgba(0, 0, 0, 0.5); /*light mode: rgba(255, 255, 255, 0.5)*/
+}
 
+.bubble-button {
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+}
+.bubble-button:focus {
+  outline: 0;
+}
+.bubble-button:before,
+.bubble-button:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 140%;
+  height: 100%;
+  left: -20%;
+  transition: all ease-in-out 0.5s;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+.bubble-button:before {
+  display: none;
+  top: -75%;
+  background-image: radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, var(--accent-color) 20%, transparent 30%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--accent-color) 15%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+}
+.bubble-button:after {
+  display: none;
+  bottom: -75%;
+  background-image: radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--accent-color) 15%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+.bubble-button:active {
+  transform: scale(0.9);
+  background-color: var(--accent-color);
+  box-shadow: 0 2px 25px var(--accent-color);
+}
+.bubble-button.animate:before {
+  display: block;
+  animation: topBubbles ease-in-out 0.75s forwards;
+}
+.bubble-button.animate:after {
+  display: block;
+  animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+@keyframes topBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+  }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+@keyframes bottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+  }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+.wrapper{
+  background: linear-gradient(#554437, #222021);
+}
 
 /* HEADER  */
 
@@ -16,8 +114,6 @@ html {
   width: 1280px;
   display: flex;
   margin: 0 auto;
-  background-image: url(assets/img/start-screen-gradient-background.jpg);
-  background-repeat: no-repeat;
 }
 
 .header-container {
@@ -97,8 +193,6 @@ h5 {
 /* SECTION NOT-ONLY  */
 .hero {
   width: 1280px;
-  background-image: url(assets/img/start-screen-gradient-background.jpg);
-  background-repeat: no-repeat;
   display: flex;
   margin: 0 auto;
 }
@@ -154,7 +248,11 @@ h5 {
 .hero-pic {
   margin-left: auto;
 }
-
+.hero-pic:hover {
+-webkit-filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+cursor: pointer;
+}
 .hero-pic img {
   width: 698px;
   height: 728px;
@@ -222,6 +320,17 @@ h5 {
 
 /* SECTION OUR-FRIENDS  */
 
+.pets-item-img {
+  transition: transform 0.7s;
+}
+
+.pets-item-img:hover {
+  z-index: 1;
+  transform: rotate(10deg) scale(1.1);
+}
+
+
+
 .pets {
   width: 1280px;
   height: 877px;
@@ -269,13 +378,15 @@ h5 {
 .pets-container__images p:hover {
   color: #d3b6a2;
 }
-
-.pets-container__images .katrine img:hover,
-.jennifer img:hover,
-.woody img:hover {
-  transform: scale(1.2);
+.pets-item-img {
+  transition: transform 0.7s;
 }
 
+.pets-item-img:hover {
+  z-index: 1;
+  transform: rotate(20deg) scale(1.3);
+  cursor: pointer;
+}
 .pets-container__images button {
   width: 187px;
   height: 52px;
@@ -506,8 +617,6 @@ h5 {
 .footer {
   width: 1280px;
   margin: 0 auto;
-  background-image: url(assets/img/footer-gradient-background.jpg);
-  background-repeat: no-repeat;
 }
 
 .footer-container {
