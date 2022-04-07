@@ -8,7 +8,7 @@ html2 {
   scroll-behavior: smooth;
 }
 
-.header-logo-two h1 {
+.header-container__logo h1 {
   font-size: 2rem;
   line-height: 2.2rem;
   color: #545454;
@@ -18,28 +18,123 @@ html2 {
   letter-spacing: 2px;
 }
 
-.header-logo-two h1:hover {
+.header-container__logo h1:hover {
   color: white;
 }
 
-.header-logo-two p {
+.header-container__logo p {
   font-family: Arial;
   font-style: normal;
   font-weight: 400;
   color: #545454;
 }
 
-.header-logo-two h3,
-.header-logo-two h4,
-.header-logo-two h5 {
+.header-container__logo h3,
+.header-container__logo h4,
+.header-container__logo h5 {
   font-family: Georgia;
   font-style: normal;
   font-weight: 400;
 }
 
-/* HEADER-TWO  */
+:root {
+  --main-color: #fff; /*light mode: black*/
+  --contrast-color: #000; /*light mode: white*/
+  --accent-color: #bdae82; /*light mode: black */
+  --hover-color: #bdae82; /*light mode: white*/
+  --button-color: #bdae82; /*no change*/
+  --light-color: transparent; /*light mode: #bdae82*/
+  --active-color: #000; /*light mode: #bdae82*/
+  --wrapper-color: rgba(0, 0, 0, 0.5); /*no change*/
+  --wrapper-form: rgba(0, 0, 0, 0.5); /*light mode: rgba(255, 255, 255, 0.5)*/
+}
 
-.header-two {
+.bubble-button {
+  position: relative;
+  transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+}
+.bubble-button:focus {
+  outline: 0;
+}
+.bubble-button:before,
+.bubble-button:after {
+  position: absolute;
+  content: "";
+  display: block;
+  width: 140%;
+  height: 100%;
+  left: -20%;
+  transition: all ease-in-out 0.5s;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+.bubble-button:before {
+  display: none;
+  top: -75%;
+  background-image: radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, var(--accent-color) 20%, transparent 30%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--accent-color) 15%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+}
+.bubble-button:after {
+  display: none;
+  bottom: -75%;
+  background-image: radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--accent-color) 15%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--accent-color) 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+.bubble-button:active {
+  transform: scale(0.9);
+  background-color: var(--accent-color);
+  box-shadow: 0 2px 25px var(--accent-color);
+}
+.bubble-button.animate:before {
+  display: block;
+  animation: topBubbles ease-in-out 0.75s forwards;
+}
+.bubble-button.animate:after {
+  display: block;
+  animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+@keyframes topBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%, 40% 90%, 55% 90%, 70% 90%;
+  }
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%, 50% 50%, 65% 20%, 90% 30%;
+  }
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%, 50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+@keyframes bottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%, 70% -10%, 70% 0%;
+  }
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%, 105% 0%;
+  }
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%, 110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+/* ==================================HEADER=================================== */
+
+.header {
   width: 1280px;
   display: flex;
   margin: 0 auto;
@@ -49,7 +144,7 @@ html2 {
   top: 0;
 }
 
-.header-wrapper-two {
+.header-container {
   width: 1200px;
   display: flex;
   align-items: center;
@@ -57,27 +152,27 @@ html2 {
   margin: 0 auto;
 }
 
-.header-logo-two p {
+.header-container__logo p {
   font-size: 0.8125rem;
   line-height: 0.936rem;
   letter-spacing: 1.5px;
 }
 
-.header-menu-two nav ul {
+.header-container__menu nav ul {
   list-style-type: none;
   display: flex;
 }
 
-.line-two a {
+.active a {
   border-bottom: 3px solid #f1cdb3;
 }
 
-.header-menu-two {
+.header-container__menu {
   margin-top: auto;
   margin-bottom: 19px;
 }
 
-.header-menu-two a {
+.header-container__menu a {
   text-decoration: none;
   font-size: 0.9375rem;
   line-height: 1.5rem;
@@ -87,30 +182,30 @@ html2 {
   margin-left: 36px;
 }
 
-.header-menu-two a:hover {
+.header-container__menu a:hover {
   color: #f1cdb3;
 }
 
 /* SECTION OUR-FRIENDS-TWO  */
 
-.our-friends-two {
+.pets {
   width: 1280px;
   margin: 0 auto;
 }
 
-.friends-wrapper-two {
+.pets-container {
   width: 1200px;
   margin: 0 auto;
 }
 
-.friends-name-two {
+.pets-container__name {
   width: 400px;
   margin: auto;
   margin-top: 110px;
   margin-bottom: 59px;
 }
 
-.friends-name-two h3 {
+.pets-container__name h3 {
   font-size: 2.1875rem;
   line-height: 2.8325rem;
   color: #545454;
@@ -118,13 +213,13 @@ html2 {
   letter-spacing: 2.5px;
 }
 
-.friend-images-two {
+.pets-container__img {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 }
 
-.friend-images-two p {
+.pets-container__img p {
   font-size: 1.25rem;
   line-height: 1.4365rem;
   color: #545454;
@@ -135,11 +230,11 @@ html2 {
   cursor: pointer;
 }
 
-.friend-images-two p:hover {
+.pets-container__img p:hover {
   color: #d3b6a2;
 }
 
-.friends-name-img-two button {
+.pets-container__img button {
   width: 187px;
   height: 52px;
   border-radius: 100px;
@@ -159,20 +254,20 @@ html2 {
   margin-bottom: 63px;
 }
 
-.friend-images-two img:hover {
+.pets-container__img img:hover {
   transform: scale(1.2);
 }
 
-.friend-images-two button:hover {
+.pets-container__img button:hover {
   background-color: #fddcc4;
 }
 
-.friends-name-img-two img {
+.pets-container__img2 img {
   width: 270px;
   height: 270px;
 }
 
-.friends-button-next {
+.pets-container__button {
   width: 345px;
   display: flex;
   justify-content: space-between;
@@ -181,38 +276,35 @@ html2 {
   margin-top: 26px;
 }
 
-.friends-button-next button {
+.pets-container__button button {
   border: none;
   cursor: pointer;
 }
 
-.friends-button-next img:hover {
+.pets-container__button img:hover {
   background-color: #FDDCC4;
 }
 
 /* FOOTER-TWO  */
 
-.footer-two {
+.footer {
   width: 1280px;
-  margin: 0 auto;
-  background-image: url(assets/img/footer-gradient-background.jpg);
-  background-repeat: no-repeat;
-}
+  margin: 0 auto;}
 
-.footer-wrapper-two {
+.footer-container {
   width: 1200px;
   margin: 0 auto;
   align-items: center;
 }
 
-.footer-menu-two {
+.footer-container__menu {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.footer-name-left-two h3,
-.footer-name-right-two h3 {
+.footer-container__name-left h3,
+.footer-container__name-right h3 {
   font-size: 2.1875rem;
   line-height: 2.8125rem;
   letter-spacing: 2.5px;
@@ -231,11 +323,11 @@ html2 {
   margin-right: 20px;
 }
 
-.footer-name-left-two {
+.footer-container__name-left {
   width: 278px;
 }
 
-.footer-menu-left-two h4 {
+.footer-container__left h4 {
   color: #f1cdb3;
   font-size: 1.25rem;
   letter-spacing: 1px;
@@ -244,7 +336,7 @@ html2 {
   font-weight: 400;
 }
 
-.footer-menu-left-two a {
+.footer-container__left a {
   text-decoration: none;
 }
 
@@ -258,12 +350,12 @@ html2 {
   margin-right: 20px;
 }
 
-.footer-name-right-two {
+.footer-container__name-right {
   width: 320px;
   margin-bottom: 34px;
 }
 
-.footer-name-right-two h3 {
+.footer-container__name-right h3 {
   margin-bottom: 34px;
   margin-left: 10px;
 }
@@ -304,7 +396,7 @@ html2 {
   margin-left: 15px;
 }
 
-.footer-puppy-image-two {
+.footer-container__puppyimg {
   width: 300px;
   height: 310px;
   margin-top: 40px;
@@ -318,4 +410,8 @@ html2 {
 .email h4:hover,
 .phone h4:hover {
   color: #f8f0f0;
+}
+
+.wrapper{
+  background: linear-gradient(#554437, #222021);
 }
