@@ -51,7 +51,7 @@
               </p>
             </div>
             <form action="#pets">
-            <button class="bubble-button"  data-message="modal">Make a friend</button></form>
+            <button class="bubble-button">Make a friend</button></form>
           </div>
          
           <div class="hero-pic">
@@ -105,17 +105,17 @@
         <div class="katrine">
           <img class="pets-item-img" src="assets/img/pets-katrine.jpg" alt="Katrine" />
           <p>Katrine</p>
-          <button class="bubble-button">Learn more</button>
+          <button class="bubble-button" data-message="modal">Learn more</button>
         </div>
         <div class="jennifer">
           <img class="pets-item-img" src="assets/img/pets-jennifer.jpg" alt="Jennifer" />
           <p>Jennifer</p>
-          <button class="bubble-button">Learn more</button>
+          <button class="bubble-button" data-message="modal">Learn more</button>
         </div>
         <div class="woody">
           <img class="pets-item-img" src="assets/img/pets-woody.jpg" alt="Woody" />
           <p>Woody</p>
-          <button class="bubble-button">Learn more</button>
+          <button class="bubble-button" data-message="modal">Learn more</button>
         </div>
 
         <img class="forward" src="assets/icons/button_arrow.svg" alt="forward" />
@@ -187,7 +187,7 @@
           <h3>You can also make a donation</h3>
         </div>
         <h5>Name of the bank / Type of banc account</h5>
-        <button class="donation-container__credit bubble-button">
+        <button class="donation-container__credit bubble-button" data-message="modal">
           <img src="assets/icons/credit-card.svg" alt="" />
           <a href="#">
             <h4>8380 2880 8028 8791 7435</h4>
@@ -254,6 +254,23 @@
         </div>
       </div>
     </footer>
+  </div>
+
+  <div id="modal" class="modal hidden">
+    <div class="overlay">
+      <div class="message hidden">
+        <div class="icon-close">✖</div>
+        <p class="message-text">
+          <span>Hello, dear friend!</span><br>
+          <span>This page is under construction. Thank you for being patient!</span>
+        </p>
+        <p class="message-sign">
+          <span>Best regards, Pablo Verenich</span> 🤍<br>
+          <span>Technical support:</span>
+          <a class="message-link" href="https://github.com/Pablov1999" target="_black">@Pablov1999</a> 💻
+        </p>
+      </div>
+    </div>
   </div>
 
   <div class="btn-up">
